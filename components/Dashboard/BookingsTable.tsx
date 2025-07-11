@@ -1,3 +1,4 @@
+// components/Dashboard/BookingsTable.tsx
 'use client';
 
 import { useState } from 'react';
@@ -14,11 +15,13 @@ import { toast } from 'sonner';
 interface BookingsTableProps {
   bookings: BookingWithVehicle[];
   onStatusUpdate: (id: string, status: 'confirmed' | 'cancelled') => void;
+  // FIX: Added onEditBooking prop
+  onEditBooking: (id: string) => void;
 }
 
-export default function BookingsTable({ bookings, onStatusUpdate }: BookingsTableProps) {
-  const router = useRouter();
-  const { user } = useAuth();
+export default function BookingsTable({ bookings, onStatusUpdate, onEditBooking }: BookingsTableProps) {
+  const router = useRouter(); // Keep if you use router.push for View Details
+  const { user } = useAuth(); // Needed for adminId/adminName in status update
   const [loadingStates, setLoadingStates] = useState<Record<string, boolean>>({});
 
   const handleStatusUpdate = async (id: string, status: 'confirmed' | 'cancelled') => {
@@ -35,9 +38,11 @@ export default function BookingsTable({ bookings, onStatusUpdate }: BookingsTabl
         onStatusUpdate(id, status);
         toast.success(`Booking ${status} successfully`);
       } else {
-        toast.error('Failed to update booking status');
+        const errorData = await response.json();
+        toast.error(`Failed to update booking status: ${errorData.message || response.statusText}`);
       }
     } catch (error) {
+      console.error('Error updating booking status:', error);
       toast.error('An error occurred while updating the booking');
     } finally {
       setLoadingStates(prev => ({ ...prev, [id]: false }));
@@ -175,7 +180,7 @@ export default function BookingsTable({ bookings, onStatusUpdate }: BookingsTabl
                       <Button
                         size="sm"
                         variant="outline"
-                        onClick={() => router.push(`/dashboard/edit-booking/${booking.id}`)}
+                        onClick={() => onEditBooking(booking.id)} // Using the prop
                         title="Edit booking details"
                       >
                         <Edit className="h-4 w-4" />
