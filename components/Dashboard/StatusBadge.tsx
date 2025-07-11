@@ -2,7 +2,7 @@ import { Badge } from '@/components/ui/badge';
 import { CheckCircle, Clock, XCircle } from 'lucide-react';
 
 interface StatusBadgeProps {
-  status: 'pending' | 'approved' | 'rejected';
+  status: 'pending' | 'confirmed' | 'cancelled';
 }
 
 export default function StatusBadge({ status }: StatusBadgeProps) {
@@ -13,13 +13,13 @@ export default function StatusBadge({ status }: StatusBadgeProps) {
       icon: Clock,
       className: 'bg-yellow-100 text-yellow-800 hover:bg-yellow-100'
     },
-    approved: {
+    confirmed: {
       label: 'Approved',
       variant: 'default' as const,
       icon: CheckCircle,
       className: 'bg-green-100 text-green-800 hover:bg-green-100'
     },
-    rejected: {
+    cancelled: {
       label: 'Rejected',
       variant: 'destructive' as const,
       icon: XCircle,

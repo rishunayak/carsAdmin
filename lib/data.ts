@@ -684,7 +684,6 @@ export function getListings(page: number = 1, limit: number = 10, status?: strin
       price: booking.vehicle.dailyRate,
       status: booking.status as any,
       submittedAt: booking.createdAt,
-      submittedBy: booking.createdBy
     })),
     total: result.total,
     totalPages: result.totalPages,
@@ -701,7 +700,6 @@ export function getListingById(id: string) {
     price: booking.vehicle.dailyRate,
     status: booking.status as any,
     submittedAt: booking.createdAt,
-    submittedBy: booking.createdBy
   };
 }
 

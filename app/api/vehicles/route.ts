@@ -6,11 +6,11 @@ export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest) {
   try {
     const vehicles = getAllVehicles();
-    const activeVehicles = vehicles.filter(vehicle => vehicle.status === 'active');
+    //const activeVehicles = vehicles.filter(vehicle => vehicle.status === 'active');
     
     return NextResponse.json({
-      vehicles: activeVehicles,
-      total: activeVehicles.length
+      vehicles: vehicles,
+      total: vehicles.length
     });
   } catch (error) {
     console.error('Error fetching vehicles:', error);

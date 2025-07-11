@@ -103,12 +103,7 @@ export default function ListingsTable({ listings, onStatusUpdate }: ListingsTabl
               <TableCell>
                 <StatusBadge status={listing.status} />
               </TableCell>
-              <TableCell>
-                <div className="text-sm">
-                  <p className="text-gray-900">{formatDate(listing.submittedAt)}</p>
-                  <p className="text-gray-500">{listing.submittedBy}</p>
-                </div>
-              </TableCell>
+             
               <TableCell>
                 <div className="flex items-center space-x-2">
                   {listing.status === 'pending' && (

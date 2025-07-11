@@ -16,7 +16,7 @@ export interface Vehicle {
   dailyRate: number;
   
   // Status
-  status: 'active' | 'maintenance' | 'inactive';
+  status: 'active';
   isAvailable: boolean;
   
   // Metadata
@@ -44,7 +44,7 @@ export interface Booking {
   totalCost: number;
   
   // Status and Admin
-  status: 'pending' | 'confirmed' | 'cancelled' | 'completed';
+  status: 'pending' | 'confirmed' | 'cancelled' | 'completed' ;
   createdAt: string;
   lastModified: string;
 }
@@ -89,6 +89,27 @@ export interface AuthContextType {
 }
 
 // Legacy interface for backward compatibility
-export interface Listing extends Vehicle {
+export interface Listing {
+  id: string;
+  vehicleNumber: string; // Indian vehicle number format
+  title: string;
+  description: string;
+  make: string;
+  model: string;
+  year: number;
+  category: 'economy' | 'compact' | 'luxury' | 'suv' | 'sports' | 'bike' | 'auto';
+  imageUrl: string;
+  location: string;
+  features: string[];
+  
+  // Pricing
+  hourlyRate: number;
+  dailyRate: number;
+  isAvailable: boolean;
+  
+  // Metadata
+  createdAt: string;
+  lastModified: string;
   price: number; // Maps to dailyRate for backward compatibility
+  status: "pending" | "confirmed" | "cancelled"
 }

@@ -59,9 +59,9 @@
     "startTime": "08:00",
     "endTime": "20:00",
     "totalCost": 8400,
-    "status": "pending",
+    "status": "cancelled",
     "createdAt": "2024-01-23T16:45:00Z",
-    "lastModified": "2024-01-23T16:45:00Z"
+    "lastModified": "2025-07-11T13:42:50.941Z"
   },
   {
     "id": "B005",

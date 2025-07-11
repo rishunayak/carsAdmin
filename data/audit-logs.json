@@ -1,5 +1,15 @@
 [
   {
+    "id": "1752241370941",
+    "entityType": "booking",
+    "entityId": "B004",
+    "action": "reject",
+    "adminId": "1",
+    "adminName": "John Admin",
+    "timestamp": "2025-07-11T13:42:50.941Z",
+    "details": "Cancelled booking for Sneha Reddy - Vehicle: KA 03 EF 9012"
+  },
+  {
     "id": "1752236244860",
     "entityType": "booking",
     "entityId": "B008",
